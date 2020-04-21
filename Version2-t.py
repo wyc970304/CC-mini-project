@@ -58,7 +58,7 @@ class User:
 
 
 ## Create a new user into database
-## Returns: user details
+## Returns: user detail
 
 @app.route('/api/users/createU', methods=['POST'])
 def create_user():
