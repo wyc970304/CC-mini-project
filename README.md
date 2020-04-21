@@ -7,7 +7,7 @@ This project implement a flask application using the MetaWeather API and the VM 
 
 This weather application simply uses city name as input for searching (which is new compared with original API), instead of city IDs. GET requests are used to obtain the information and the functions hold JSON-format responses. Also, the robustness is achieved in a certain extent.
 
-*The lastest version (i.e. Version2-t.py) of application includes creating, deleting users using cassandra and some of trys in build user's identity authentication. Until now, new codes are still not pass the usability test.
+****The lastest version (i.e. Version2-t.py) of application includes creating, deleting users using cassandra and some of trys in build user's identity authentication. Until now, new codes are still not pass the usability test.
 
 PREPARATION
 
