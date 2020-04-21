@@ -5,8 +5,9 @@ This project implement a flask application using the MetaWeather API and the VM 
 1. Searching the weather of the nearest day for a specific city according to the city name.
 1. Searching both the min and max temperature in the nearest day for a specific city according to the city name.
 
-This weather application simply uses city name as input for searching (which is new compared with original API), instead of city IDs. GET requests are used to obtain the information and the functions hold JSON-format responses.
+This weather application simply uses city name as input for searching (which is new compared with original API), instead of city IDs. GET requests are used to obtain the information and the functions hold JSON-format responses. Also, the robustness is achieved in a certain extent.
 
+*The lastest version (i.e. Version2-t.py) of application includes creating, deleting users using cassandra and some of trys in build user's identity authentication. Until now, new codes are still not pass the usability test.
 
 PREPARATION
 
@@ -29,7 +30,7 @@ If it runs successfully, the output in terminal should be like:
 4. After the application is running, open another terminal and send GET request using curl according to different aims:
 
 (1) Getting the weather of the nearest day for a chosen city:
-<br/>GET /api/get_weather_by_city/<br/>
+```GET /api/get_weather_by_city/```
 ```
 curl -i 'http://localhost:5000/api/get_weather_by_city?query=london'
 ```
@@ -44,8 +45,8 @@ Date: Tue, 21 Apr 2020 02:41:49 GMT
 {"city_weather":{"date":"2020-04-21T00:16:03.009829Z","weather":"Clear"}}
 ```
 
-(1) Getting the min and max temperature of the nearest day for a chosen city:
-<br/>GET /api/get_temp_by_city/<br/>
+(2) Getting the min and max temperature of the nearest day for a chosen city:
+```GET /api/get_temp_by_city/```
 ```
 curl -i 'http://localhost:5000/api/get_temp_by_city?query=london'
 ```
