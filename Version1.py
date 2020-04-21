@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, template_folder="templates")
 
+## This application uses MetaWeather API to provide the function of:
+## searching the weather or temperature (min and max) of the nearest day for a specific city.
+## It uses city name as input for searching (which is new compared with original API), instead of city IDs.
+
 id_url_template = 'https://www.metaweather.com/api/location/search/?query={query}'
 location_url_template = 'https://www.metaweather.com/api/location/{woeid}'
 
