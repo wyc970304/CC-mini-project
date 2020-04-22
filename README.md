@@ -31,36 +31,49 @@ If it runs successfully, the output in terminal should be like:
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 
-4. After the application is running, open another terminal and send GET request using curl according to different aims:
+4. After the application is running, open another terminal and using curl to make different operations according to aims.
 
-(1) Getting the weather of the nearest day for a chosen city:
-```GET /api/get_weather_by_city/```
+
+REST API
+
+(1) @app.route('/', methods=['GET'])
+
+GET basic information (including ID, name, gender, status and species) of all character in RickandMothy directly from external API and save the information into Cassandra cloud database.
 ```
-curl -i 'http://localhost:5000/api/get_weather_by_city?query=london'
+curl -i 'http://172.17.0.2/'
 ```
 If the request is succeed, the output in terminal should be like:
 ```
 HTTP/1.0 200 OK
 Content-Type: application/json
-Content-Length: 74
-Server: Werkzeug/1.0.1 Python/2.7.12
-Date: Tue, 21 Apr 2020 02:41:49 GMT
+Content-Length: 58
+Server: Werkzeug/1.0.1 Python/3.7.7
+Date: Wed, 22 Apr 2020 09:52:49 GMT
 
-{"city_weather":{"date":"2020-04-21T00:16:03.009829Z","weather":"Clear"}}
+{"Welcome":"Basic character information of RickandMothy"}
 ```
 
-(2) Getting the min and max temperature of the nearest day for a chosen city:
-```GET /api/get_temp_by_city/```
+(2) @app.route('/person', methods=['GET'])
+Get basic information of chosen one character through RickandMothy API using ID.
 ```
-curl -i 'http://localhost:5000/api/get_temp_by_city?query=london'
+curl -i 'http://172.17.0.2/person?id=123'
 ```
-If the request is succeed, the output in terminal should be like:
-```
-HTTP/1.0 200 OK
-Content-Type: application/json
-Content-Length: 94
-Server: Werkzeug/1.0.1 Python/2.7.12
-Date: Tue, 21 Apr 2020 03:59:13 GMT
 
-{"city_temperature":{"date":"2020-04-21T03:16:02.609721Z","max_temp":16.485,"min_temp":9.79}}
+(3) @app.route('/person/<id>', methods=['GET']) 
+Get basic information of one chosen character from Cassandra database using ID.
 ```
+curl -i 'http://172.17.0.2/person/123'
+```
+   
+(4) @app.route('/create',  methods=['POST'])
+Create a new character into database.
+```
+curl -i -H "Content-Type: application/json" -X POST -d '{"id":490, "name":"Fuyuno", "gender":"Female", "status":"Alive", "species":"Human"}' http://172.17.0.2:8080/create
+```
+
+(5) @app.route('/delete',  methods=['DELETE'])
+Delete a existed character from database using ID.
+```
+curl -i -H "Content-Type: application/json" -X DELETE -d '{"id":"490"}' http://172.17.0.2:8080/delete
+```
+
