@@ -54,18 +54,21 @@ Date: Wed, 22 Apr 2020 09:52:49 GMT
 ```
 
 (2) @app.route('/person', methods=['GET'])
+
 Get basic information of chosen one character through RickandMothy API using ID.
 ```
 curl -i 'http://172.17.0.2/person?id=123'
 ```
 
 (3) @app.route('/person/<id>', methods=['GET']) 
+
 Get basic information of one chosen character from Cassandra database using ID.
 ```
 curl -i 'http://172.17.0.2/person/123'
 ```
    
 (4) @app.route('/create',  methods=['POST'])
+
 Create a new character into database.
 ```
 curl -i -H "Content-Type: application/json" -X POST -d '{"id":490, "name":"Fuyuno", "gender":"Female", "status":"Alive", "species":"Human"}' http://172.17.0.2:8080/create
