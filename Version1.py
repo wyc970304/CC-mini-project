@@ -94,6 +94,7 @@ def person_by_id(id):
 
 
 ## Create a new character into database
+@app.route('/create', methods=['POST'])
 def create_character():
         my_id=request.json['id']
         rows=session.execute("""Select * from RAM.character where id='{}'""".format(my_id))
