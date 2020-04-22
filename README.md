@@ -1,11 +1,14 @@
 # CC-mini-project-ECS781P
 by Wu Yucong
 
-This project implement a flask application using the MetaWeather API (https://www.metaweather.com/api/) and the VM of AWS in cloud, which can get the nearest weather condition conveniently and rapidly. It provide the function of:
-1. Searching the weather of the nearest day for a specific city according to the city name.
-1. Searching both the min and max temperature in the nearest day for a specific city according to the city name.
+This project implement a flask application using the RickandMothy API (https://rickandmortyapi.com/documentation/) and the VM of AWS in cloud, which can get and process the basic information of characters in RickandMothy conveniently. The application is based on REST API and use the external REST service. It provides REST API which has function of:
+1. GET basic information (including ID, name, gender, status and species) of all character in RickandMothy directly from external API and save the information into Cassandra cloud database.
+2. GET basic information of one specific character directly using external API (https://rickandmortyapi.com/api/character/{id}) according to ID.
+3. GET basic information of one specific character from cloud database according to ID.
+4. Create (i.e. POST) a new character in database.
+5. DELETE a existed character from database using the ID.
 
-This weather application simply uses city name as input for searching (which is new compared with original API), instead of city IDs. GET requests are used to obtain the information and the functions hold JSON-format responses. Also, the robustness is achieved in a certain extent.
+Also, this application is served over HTTPs. The robustness is achieved in a certain extent.
 
 ****The lastest version (i.e. Version2-t.py) of application includes creating, deleting users using cassandra and some of trys in build user's identity authentication. Until now, new codes are still not pass the usability test.
 
